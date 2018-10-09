@@ -408,6 +408,7 @@ calculateIndicatorCor <- function(
   
   switch (.approach_cor,
     "bravais-pearson" = {stats::cor(x)},
+    "robust correlation" = {estimaterobustcor(x)},
     "theil-sen" = {
       # Standardize x using robust measures 
       # X_cleaned <- (.X_cleaned - median(.X_cleaned))/mad(.X_cleaned)
@@ -428,6 +429,26 @@ calculateIndicatorCor <- function(
     }
   )
 }
+
+
+#' Internal: Calculate the robust correlation#' 
+#' @usage estimateTheilSen(
+#'   .x = args_default()$.x, 
+#'   .y = args_default()$.y)
+#'
+#' @inheritParams csem_arguments
+#' 
+#' @return A vector of length one.
+#' @keywords internal
+
+estimaterobustcor <- function(
+  .x = args_default()$.x
+) { x = .x
+  cor_temp = MASS::cov.rob(x, cor = TRUE, method = "mcd")$cor
+  cor_temp[upper.tri(cor_temp) == TRUE] = t(cor_temp)[upper.tri(cor_temp) == TRUE]
+  return(cor_temp)
+  }
+
 
 #' Internal: Calculate the Theil-Sen estimator
 #'

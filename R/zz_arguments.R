@@ -17,7 +17,8 @@
 #' "*SUMCORR*", "*MAXVAR*", "*SSQCORR*", "*MINVAR*" or "*GENVAR*". Defaults to
 #' "*SUMCORR*".
 #' @param .approach_cor Character string. Approach used to obtain the indicator 
-#'   correlation matrix. One of: "*bravais-pearson*" or "*theil-sen*".
+#'   correlation matrix. One of: "*bravais-pearson*","*theil-sen*" or
+#'    "*robust correlation*".
 #'   Defaults to "*bravais-pearson*".
 #' @param .approach_nl Character string. Approach used to estimate nonlinear
 #'   structural relationships. One of: "*sequential*" or "*replace*".
@@ -228,7 +229,7 @@ args_default <- function(
     .normality               = TRUE,
     
     #  Arguments passed to foreman
-    .approach_cor            = c("bravais-pearson","theil-sen"),
+    .approach_cor            = c("bravais-pearson","theil-sen","robust correlation"),
     .disattenuate            = TRUE,
     .dominant_indicators     = NULL,
     .estimate_structural     = TRUE,

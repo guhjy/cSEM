@@ -30,7 +30,8 @@ foreman(
 or a \link{cSEMModel}-list.}
 
 \item{.approach_cor}{Character string. Approach used to obtain the indicator
-correlation matrix. One of: "\emph{bravais-pearson}" or "\emph{theil-sen}".
+correlation matrix. One of: "\emph{bravais-pearson}","\emph{theil-sen}" or
+"\emph{robust correlation}".
 Defaults to "\emph{bravais-pearson}".}
 
 \item{.approach_nl}{Character string. Approach used to estimate nonlinear
